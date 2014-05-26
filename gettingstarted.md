@@ -1,7 +1,9 @@
 # Getting Started with Hood.ie
 
 
-### Step One - Installing Hoodie (on OS X)
+### Step One - Installing Hoodie
+
+#### OS X
 
 Installing Hoodie on Mac OS X requires Homebrew (http://brew.sh/). Homebrew is a package manager for OS X, and makes installing things as easy as:
 
@@ -20,6 +22,50 @@ Then we'll pull in Hoodie's dependencies with the following command:
 ```
 brew install git node couchdb
 ```
+
+#### Linux (Aptitude)
+
+Using Ubuntu's package manager, we should make sure that our package library is up to date:
+
+```
+sudo apt-get update
+```
+
+Then we can pull down git and couchdb:
+
+```
+sudo apt-get install git couchdb
+```
+
+In order to obtain a recent version of Node on Ubuntu, we'll need to do a few extra steps:
+
+```
+sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get install python-software-properties python g++ make nodejs
+```
+
+If the add-apt-repository command fails, then you will need to install an extra package:
+
+```
+sudo apt-get install software-properties-common
+```
+
+Try the previous set of commands once you've installed this package and you should be ready to move on.
+
+#### Linux (Yum)
+
+`
+Instructions to follow
+`
+
+#### Windows
+
+`
+Instructions to follow
+`
+
+### Cross Platform
 
 These modules are what power Hoodie, and each have their own roles.
 
