@@ -2,10 +2,12 @@
 
 ###THIS IS A WORK IN PROGRESS AND MIGHT BREAK AT ANY TIME
 
-Hoodie in OS X and with localhost in 7 not particularly complicated steps
+Hoodie in OS X and with localhost in 5 not particularly complicated steps
 -------------------------------------------------------------------------
 
 Works as of 11.07.2012
+
+Edited 05.07.2014
 
 Installation
 ------------
@@ -21,25 +23,13 @@ This assumes you've got Homebrew installed and up to date. Open a terminal windo
 
 	$ brew install nodejs
 
-###3. Get npm (the Node Package Manager)
+###3. Get git
 
-	$ curl http://npmjs.org/install.sh | sh
+	$ brew install git
 
-###4. Start couch and leave it running
+###4. Set up the CORS-Proxy
 
-	$ sudo CouchDB
-
-###5. Check your installation
-
-Check that everything worked by opening Futon, the CouchDB admin interface, at http://127.0.0.1:5984/_utils
-
-Run "Verify Installation" (under "tools" in the sidebar on the right)
-
-Set up an admin user for couch (bottom of the sidebar) and remember the user name and password for point 7
-
-Don't bother with the "Test Suite", that's for people working on couch itself
-
-###6. Set up the CORS-Proxy
+// Ed: We now use the cors-proxy built into hapi, so this will need to be revised.
 
 You'll very likely need a proxy to avoid different origin-problems, which you will definitely get if you want to build stuff in localhost. Get cors-proxy from https://github.com/gr2m/cors-proxy and put it somewhere you'll find it again. Open a terminal in the cors-proxy folder and do $ npm install . (the "." is important)
 
@@ -47,18 +37,13 @@ To run the proxy, do `$ node server.js` and leave it running
 
 More on how to use the proxy later
 
-###7. Set up a database worker
+// Ed: I don't know how this interacts with things now that we have the `hoodie start` functionality, please advise.
 
-Get the worker-user-database script from https://github.com/hoodiehq/worker-user-database and put it somewhere you'll find it again. This worker creates individual databases from hoodie users, which is something you need. So this needs to be running all the time
-You'll need to set some environment variables. Open a new terminal window in this folder and do 
+###5. Start Hoodie
 
-	$ export HOODIE_SERVER=http://localhost:5984
-	$ export HOODIE_ADMIN_USER=couch_admin_username
-	$ export HOODIE_ADMIN_PASS=couch_admin_password
+In order to begin the hoodie app `$ hoodie start` and you'll see some output in the console, letting you know the locations that have been set up for you, although you probably only need to worry about localhost:6001 which is the address of your brand new hoodie app! Your default browser will automatically open at that page, and you can start playing about with the app.
 
-To start the worker, do `$ node index.js` and leave it running
-
-You're set. You'll need to have CouchDB, node server.js and node CreateUserDatabase running at all times, so don't close those terminal tabs or windows. You can turn couch into a daemon so it starts automatically with your system (check out http://guide.couchdb.org/draft/source.html#daemon).
+// Ed: Up to now, I reckon this might work, depending on the cors-proxy set up instructions working.
 
 First steps
 -----------
@@ -107,7 +92,7 @@ Let's do one more thing. Add this to the code or run it in your console:
 
 In Futon, change the color attribute of the 'couch'-object to 'green' and then check your browser console. Don't tell me that isn't awesome!
 
-Take a look at http://hoodiehq.github.com/hoodie.js/ for more of the hoodie API reference.
+Take a look at http://hoodiehq.github.io/hoodie.js/for more of the hoodie API reference.
 
 Have fun trying out hoodie!
 
